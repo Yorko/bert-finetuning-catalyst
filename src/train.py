@@ -76,5 +76,5 @@ runner.infer(
 )
 
 # lastly, saving predicted scores for the test set
-predicted_probs = runner.callbacks[0].predictions["scores"]
+predicted_probs = runner.callbacks[0].predictions["logits"]
 np.savetxt(X=predicted_probs, fname=params["data"]["path_to_test_pred_scores"])

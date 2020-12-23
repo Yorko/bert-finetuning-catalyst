@@ -1,4 +1,7 @@
+pyyaml
 pandas>=1.0.1
 torch>=1.2.0
 transformers>=3.5.1
 catalyst>=20.8
+numpy>=1.19.4
+
