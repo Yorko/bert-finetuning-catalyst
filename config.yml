@@ -1,0 +1,24 @@
+data:
+  path_to_data: data/sdg_classification
+  train_filename: train_set_sdg_1_7_8_12_13_toy.csv
+  validation_filename: val_set_sdg_1_7_8_12_13_toy.csv
+  test_filename: eval_set_sdg_1_7_8_12_13_curated_journals_toy.csv
+  text_field_name: title_keywords_abstract
+  label_field_name: sdg_id
+  path_to_test_pred_scores: data/output/pred.txt
+
+model:
+  model_name: distilbert-base-uncased    # pretrained model from Transformers
+  max_seq_length: 256                    # depends on your available GPU memory (in combination with batch size)
+  num_classes: 5
+
+training:
+  learn_rate: 3e-5                       # learning rate is typically ~1e-5 for transformers
+  num_epochs: 1                          # smth around 2-6 epochs is typically fine when finetuning transformers
+  accum_steps: 4                         # one optimization step for that many backward passes
+  batch_size: 16                         # depends on your available GPU memory (in combination with max seq length)
+  log_dir: logdir                        # for training logs and tensorboard visualizations
+  fp16_params: None                      # fp16 support
+
+general:
+  seed: 17                               # random seed for reproducibility

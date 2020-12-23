@@ -1,0 +1,4 @@
+[2020-11-26 23:54:06,214] 
+1/1 * Epoch 1 (_base): lr=3.000e-05 | momentum=0.9000
+1/1 * Epoch 1 (train): accuracy01=0.1733 | accuracy03=0.5933 | loss=1.6265
+1/1 * Epoch 1 (valid): accuracy01=0.2400 | accuracy03=0.7600 | loss=1.5687
