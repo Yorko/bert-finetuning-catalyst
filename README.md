@@ -13,6 +13,4 @@ Also, see more extended tutorials:
 
  - multi-class classification: classifying Amazon product reviews into categories, [Kaggle Notebook](https://www.kaggle.com/kashnitsky/distillbert-catalyst-amazon-product-reviews)
  - multi-label classification: identifying toxic comments, [Kaggle Notebook](https://www.kaggle.com/kashnitsky/catalyst-distilbert-multilabel-clf-toxic-comments)
-
- 
-[Confluence page](https://confluence.cbsels.com/display/RCODS/BERT+fine-tuning+with+PyTorch%2C+HuggingFace%2C+and+Catalyst), [recording](https://elsevier.zoom.us/rec/share/17g_YJO4Zfz_PoO9h1r_PNmsefJGnrlE6GCEsXmmeJBJ3gy6yjXTpNZWyIG4t8dy.UPdxNzYRzSArbJi7) (passcode: 1sfBi?xP)
+ - an overview of this pipeline is given in a video [Firing a cannon at sparrows: BERT vs. logreg](https://youtu.be/JIU6WZuWl6k)

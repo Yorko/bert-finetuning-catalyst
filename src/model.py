@@ -25,7 +25,6 @@ class BertForSequenceClassification(nn.Module):
         )
 
         self.model = AutoModel.from_pretrained(pretrained_model_name, config=config)
-        #         self.pre_classifier = nn.Linear(config.hidden_size, config.hidden_size)
         self.classifier = nn.Linear(config.hidden_size, num_classes)
         self.dropout = nn.Dropout(dropout)
 
@@ -42,19 +41,21 @@ class BertForSequenceClassification(nn.Module):
                 we keep the head, size: [num_heads]
                 or [num_hidden_layers x num_heads]
         Returns:
-            PyTorch Tensor with predicted class probabilities
+            PyTorch Tensor with predicted class scores
         """
         assert attention_mask is not None, "attention mask is none"
 
+        # taking BERTModel output
+        # see https://huggingface.co/transformers/model_doc/bert.html#transformers.BertModel
         bert_output = self.model(
             input_ids=features, attention_mask=attention_mask, head_mask=head_mask
         )
         # we only need the hidden state here and don't need
         # transformer output, so index 0
         seq_output = bert_output[0]  # (bs, seq_len, dim)
-        # mean pooling, i.e. getting average representation for all tokens
+        # mean pooling, i.e. getting average representation of all tokens
         pooled_output = seq_output.mean(axis=1)  # (bs, dim)
         pooled_output = self.dropout(pooled_output)  # (bs, dim)
-        scores = self.classifier(pooled_output)  # (bs, dim)
+        scores = self.classifier(pooled_output)  # (bs, num_classes)
 
         return scores

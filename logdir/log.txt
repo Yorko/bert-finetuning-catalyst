@@ -1,12 +1,12 @@
-[2020-11-26 23:54:06,214] 
+[2020-11-26 23:54:06,214]
 1/1 * Epoch 1 (_base): lr=3.000e-05 | momentum=0.9000
 1/1 * Epoch 1 (train): accuracy01=0.1733 | accuracy03=0.5933 | loss=1.6265
 1/1 * Epoch 1 (valid): accuracy01=0.2400 | accuracy03=0.7600 | loss=1.5687
-[2020-12-23 16:30:04,204] 
+[2020-12-23 16:30:04,204]
 1/1 * Epoch 1 (_base): lr=3.000e-05 | momentum=0.9000
 1/1 * Epoch 1 (train): accuracy01=0.1667 | accuracy03=0.6467 | loss=1.6111
 1/1 * Epoch 1 (valid): accuracy01=0.2400 | accuracy03=0.6800 | loss=1.5848
-[2020-12-23 16:38:44,856] 
+[2020-12-23 16:38:44,856]
 1/1 * Epoch 1 (_base): lr=3.000e-05 | momentum=0.9000
 1/1 * Epoch 1 (train): accuracy01=0.2067 | accuracy03=0.6333 | loss=1.6146
 1/1 * Epoch 1 (valid): accuracy01=0.1600 | accuracy03=0.6800 | loss=1.5873
