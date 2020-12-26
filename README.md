@@ -1,4 +1,4 @@
-# BERT fine-tuning with PyTorch, HuggingFace, and Catalyst
+# BERT classifier fine-tuning with PyTorch, HuggingFace, and Catalyst
 
 <img src='https://habrastorage.org/webt/ne/n_/ow/nen_ow49hxu8zrkgolq1rv3xkhi.png'>
 
