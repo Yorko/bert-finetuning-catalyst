@@ -6,6 +6,7 @@ import pandas as pd
 import torch
 from torch.utils.data import DataLoader, Dataset
 from transformers import AutoTokenizer
+from catalyst.utils import set_global_seed
 
 
 class TextClassificationDataset(Dataset):
@@ -141,6 +142,8 @@ def read_data(params: dict) -> Tuple[dict, dict]:
         max_seq_length=params["model"]["max_seq_length"],
         model_name=params["model"]["model_name"],
     )
+
+    set_global_seed(params["general"]["seed"])
 
     # creating PyTorch data loaders and placing them in dictionaries (for Catalyst)
     train_val_loaders = {
