@@ -1,6 +1,4 @@
-# BERT classifier fine-tuning with PyTorch, HuggingFace, and Catalyst
-
-<img src='https://habrastorage.org/webt/ne/n_/ow/nen_ow49hxu8zrkgolq1rv3xkhi.png'>
+<img src="https://habrastorage.org/webt/vc/3r/cw/vc3rcwkzc1ddo7s4tux1ys-us0i.png" />
 
 **Instruction:**
 
@@ -13,7 +11,7 @@
 
 I explain the pipeline in detail in a video-tutorial which consists of 4 parts:
 
-- [Intro](https://youtu.be/fPDUcaLPu58): overview of this pipeline
+- [Intro](https://youtu.be/fPDUcaLPu58): overview of this pipeline, introducing the classification task + overview of the previous talk [Firing a cannon at sparrows: BERT vs. logreg](https://youtu.be/JIU6WZuWl6k) 
 - [Data preparation](https://youtu.be/7zoNJV67dkA) for training: from CSV files to PyTorch DataLoaders
 - [The model](https://youtu.be/StbFK_rp_rY): understanding the BERT classifier model by HuggingFace, digging into the code of the transformers library
 - [Training](https://youtu.be/A5brO93bRis): running the pipeline with Catalyst and GPUs
