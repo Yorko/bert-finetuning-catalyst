@@ -143,6 +143,7 @@ cython_debug/
 logdir/checkpoints
 data/sdg_classification/*.csv
 data/sdg_classification/*.zip
+data/motions_laws/*.csv
 !data/sdg_classification/*_toy.csv
 notebooks
 *.pkl
