@@ -21,3 +21,8 @@ Also, see other tutorials/talks on the topic:
  - multi-class classification: classifying Amazon product reviews into categories, [Kaggle Notebook](https://www.kaggle.com/kashnitsky/distillbert-catalyst-amazon-product-reviews)
  - multi-label classification: identifying toxic comments, [Kaggle Notebook](https://www.kaggle.com/kashnitsky/catalyst-distilbert-multilabel-clf-toxic-comments)
  - an overview of this pipeline is given in a video [Firing a cannon at sparrows: BERT vs. logreg](https://youtu.be/JIU6WZuWl6k)
+
+**Setting up Environment**
+1. conda create -n [name of environment] python=3.9 
+2. conda activate [name of environment]
+3. pip install -r requirements.txt
