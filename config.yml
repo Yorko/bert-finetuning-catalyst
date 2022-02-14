@@ -1,16 +1,16 @@
 data:
-  path_to_data: data/sdg_classification
-  train_filename: train_set_sdg_1_7_8_12_13_toy.csv
-  validation_filename: val_set_sdg_1_7_8_12_13_toy.csv
-  test_filename: eval_set_sdg_1_7_8_12_13_curated_journals_toy.csv
-  text_field_name: title_keywords_abstract
-  label_field_name: sdg_id
+  path_to_data: data/motions_laws
+  train_filename: train.csv
+  validation_filename: valid.csv
+  test_filename: test.csv
+  text_field_name: description
+  label_field_name: ''
   path_to_test_pred_scores: data/output/pred.txt
 
 model:
   model_name: distilbert-base-uncased    # pretrained model from Transformers
-  max_seq_length: 256                    # depends on your available GPU memory (in combination with batch size)
-  num_classes: 5
+  max_seq_length: 45                    # depends on your available GPU memory (in combination with batch size)
+  num_classes: 10
 
 training:
   learn_rate: 3e-5                       # learning rate is typically ~1e-5 for transformers
