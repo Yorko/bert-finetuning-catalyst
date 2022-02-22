@@ -4,13 +4,14 @@ data:
   validation_filename: valid.csv
   test_filename: test.csv
   text_field_name: description
-  label_field_name: ''
+  label_field_name: target
   path_to_test_pred_scores: data/output/pred.txt
 
 model:
   model_name: distilbert-base-uncased    # pretrained model from Transformers
-  max_seq_length: 45                    # depends on your available GPU memory (in combination with batch size)
-  num_classes: 10
+  max_seq_length: 32                    # depends on your available GPU memory (in combination with batch size)
+  num_classes: 29 #total number of different motions 
+  #also remember to edit C:\Users\alanx\anaconda3\envs\law\Lib\site-packages\catalyst\utils\metrics file for the metrics change view() functions in reshape()
 
 training:
   learn_rate: 3e-5                       # learning rate is typically ~1e-5 for transformers
