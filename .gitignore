@@ -141,7 +141,14 @@ cython_debug/
 .DS_Store
 .idea/
 logdir/checkpoints
+logdir/_base_log
+logdir/train_log
+logdir/valid_log
 data/sdg_classification/*.csv
+None/
+checkpoints/
+None/checkpoints/
+None/checkpoints/*
 data/sdg_classification/*.zip
 data/motions_laws/*
 !data/sdg_classification/*_toy.csv
