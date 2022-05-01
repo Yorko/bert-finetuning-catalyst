@@ -4,9 +4,9 @@ from typing import List, Mapping, Tuple
 
 import pandas as pd
 import torch
+from catalyst.utils import set_global_seed
 from torch.utils.data import DataLoader, Dataset
 from transformers import AutoTokenizer
-from catalyst.utils import set_global_seed
 
 
 class TextClassificationDataset(Dataset):
@@ -111,15 +111,9 @@ def read_data(params: dict) -> Tuple[dict, dict]:
     :return: a tuple with 2 dictionaries
     """
     # reading CSV files to Pandas dataframes
-    train_df = pd.read_csv(
-        Path(params["data"]["path_to_data"]) / params["data"]["train_filename"]
-    )
-    valid_df = pd.read_csv(
-        Path(params["data"]["path_to_data"]) / params["data"]["validation_filename"]
-    )
-    test_df = pd.read_csv(
-        Path(params["data"]["path_to_data"]) / params["data"]["test_filename"]
-    )
+    train_df = pd.read_csv(Path(params["data"]["path_to_data"]) / params["data"]["train_filename"])
+    valid_df = pd.read_csv(Path(params["data"]["path_to_data"]) / params["data"]["validation_filename"])
+    test_df = pd.read_csv(Path(params["data"]["path_to_data"]) / params["data"]["test_filename"])
 
     # creating PyTorch Datasets
     train_dataset = TextClassificationDataset(

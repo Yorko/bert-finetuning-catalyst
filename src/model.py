@@ -8,9 +8,7 @@ class BertForSequenceClassification(nn.Module):
     See transformers/modeling_distilbert.py in the transformers repository.
     """
 
-    def __init__(
-        self, pretrained_model_name: str, num_classes: int = None, dropout: float = 0.3
-    ):
+    def __init__(self, pretrained_model_name: str, num_classes: int = None, dropout: float = 0.3):
         """
         Args:
             pretrained_model_name (str): HuggingFace model name.
@@ -20,9 +18,7 @@ class BertForSequenceClassification(nn.Module):
         """
         super().__init__()
 
-        config = AutoConfig.from_pretrained(
-            pretrained_model_name, num_labels=num_classes
-        )
+        config = AutoConfig.from_pretrained(pretrained_model_name, num_labels=num_classes)
 
         self.model = AutoModel.from_pretrained(pretrained_model_name, config=config)
         self.classifier = nn.Linear(config.hidden_size, num_classes)
@@ -47,9 +43,7 @@ class BertForSequenceClassification(nn.Module):
 
         # taking BERTModel output
         # see https://huggingface.co/transformers/model_doc/bert.html#transformers.BertModel
-        bert_output = self.model(
-            input_ids=features, attention_mask=attention_mask, head_mask=head_mask
-        )
+        bert_output = self.model(input_ids=features, attention_mask=attention_mask, head_mask=head_mask)
         # we only need the hidden state here and don't need
         # transformer output, so index 0
         seq_output = bert_output[0]  # (bs, seq_len, dim)

@@ -140,9 +140,7 @@ cython_debug/
 # other
 .DS_Store
 .idea/
-logdir/checkpoints
+logdir
 data/sdg_classification/*.csv
 data/sdg_classification/*.zip
 !data/sdg_classification/*_toy.csv
-notebooks
-*.pkl

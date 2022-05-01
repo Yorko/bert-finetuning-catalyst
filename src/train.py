@@ -3,12 +3,12 @@ from pathlib import Path
 import numpy as np
 import torch
 import yaml
-from catalyst.dl import SupervisedRunner
-from catalyst.dl.callbacks import (
-    AccuracyCallback,
+from catalyst.callbacks.metrics.accuracy import AccuracyCallback
+from catalyst.dl import (
     CheckpointCallback,
-    InferCallback,
     OptimizerCallback,
+    SchedulerCallback,
+    SupervisedRunner,
 )
 from catalyst.utils import prepare_cudnn, set_global_seed
 
@@ -32,9 +32,7 @@ model = BertForSequenceClassification(
 
 # specify criterion for the multi-class classification task, optimizer and scheduler
 criterion = torch.nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(
-    model.parameters(), lr=float(params["training"]["learn_rate"])
-)
+optimizer = torch.optim.Adam(model.parameters(), lr=float(params["training"]["learn_rate"]))
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer)
 
 # reproducibility
@@ -53,8 +51,10 @@ runner.train(
     scheduler=scheduler,
     loaders=train_val_loaders,
     callbacks=[
-        AccuracyCallback(num_classes=int(params["model"]["num_classes"])),
-        OptimizerCallback(accumulation_steps=int(params["training"]["accum_steps"])),
+        AccuracyCallback(num_classes=int(params["model"]["num_classes"]), input_key="logits", target_key="targets"),
+        OptimizerCallback(accumulation_steps=int(params["training"]["accum_steps"]), metric_key="loss"),
+        SchedulerCallback(loader_key="valid", metric_key="loss"),
+        CheckpointCallback(logdir=params["training"]["log_dir"], loader_key="valid", metric_key="loss", minimize=True),
     ],
     logdir=params["training"]["log_dir"],
     num_epochs=int(params["training"]["num_epochs"]),
@@ -63,18 +63,16 @@ runner.train(
 
 # and running inference
 torch.cuda.empty_cache()
-runner.infer(
-    model=model,
-    loaders=test_loaders,
-    callbacks=[
-        CheckpointCallback(
-            resume=f"{params['training']['log_dir']}/checkpoints/best.pth"
-        ),
-        InferCallback(),
-    ],
-    verbose=True,
+
+# getting validation metrics
+metrics = runner.evaluate_loader(
+    loader=train_val_loaders["valid"],
+    callbacks=[AccuracyCallback(input_key="logits", target_key="targets")],
 )
+print(metrics)
 
 # lastly, saving predicted scores for the test set
-predicted_scores = runner.callbacks[0].predictions["logits"]
-np.savetxt(X=predicted_scores, fname=params["data"]["path_to_test_pred_scores"])
+test_pred_scores = np.concatenate(
+    [pred["logits"].detach().cpu().numpy() for pred in runner.predict_loader(loader=test_loaders["test"])]
+)
+np.savetxt(X=test_pred_scores, fname=params["data"]["path_to_test_pred_scores"])
