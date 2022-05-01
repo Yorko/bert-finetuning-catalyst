@@ -2,7 +2,7 @@
 
 **Instruction:**
 
-- install [Poetry](https://python-poetry.org/docs/basic-usage/), and run `poetry install` to create an environment and install all dependencies
+- install [Poetry](https://python-poetry.org/docs/basic-usage/), and run `poetry install` to create an environment and install all dependencies (you might need to adapt PyTorch version in `pyproject.toml` w.r.t. your CUDA version)
 - specify your data, model, and training parameters in `config.yml`
 - if needed, customize the code for data processing in `src/data.py`
 - specify your model in `src/model.py`, by default it's DistilBERT for sequence classification
