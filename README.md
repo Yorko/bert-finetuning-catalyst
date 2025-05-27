@@ -1,5 +1,7 @@
 <img src="https://habrastorage.org/webt/vc/3r/cw/vc3rcwkzc1ddo7s4tux1ys-us0i.png" />
 
+**UPD:** [Catalyst](https://github.com/catalyst-team/catalyst) is no longer being maintained, so archiving this repo. 
+
 **Instruction:**
 
 - install [Poetry](https://python-poetry.org/docs/basic-usage/), and run `poetry install` to create an environment and install all dependencies (you might need to adapt PyTorch version in `pyproject.toml` w.r.t. your CUDA version)
